@@ -15,7 +15,7 @@ This packet sniffing tool is designed to intercept and analyze network traffic i
 ## Contributions
 
 - Shubham Yadav: Implemented real-time keyword alert functionality.
-- Chandan Rakholia: Search Functionality and regex
+- Chandan Rakholia: Keyword Search Functionality, regex and credential search.
 - Aarav Jain: todo
 - Lalak Yadav: todo
 
