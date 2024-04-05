@@ -23,8 +23,8 @@ def keyword_search(packet, data):
         return True        
 
 
-# example
-regex = r'(01)*'  # Regular expression
-text = 'lalak000lyadav'  # Text 
-result = regex_search(regex, text)
-print(result)
+# # example
+# regex = r'(01)*'  # Regular expression
+# text = 'lalak000lyadav'  # Text 
+# result = regex_search(regex, text)
+# print(result)

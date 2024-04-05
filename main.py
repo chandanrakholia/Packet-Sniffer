@@ -44,10 +44,11 @@ def main():
     elif choice == "2":
         check_packet = regex_search
         regex_to_search = input("Enter the Regular expression to search for: ")
-        data["Regex"] = regex_to_search
+        data["regex"] = regex_to_search
     elif choice == "3":
         check_packet = get_all_user_credentials
 
+    print("Sniffing packets ------- \n")
     sniff(prn=lambda packet: execute(packet, data, check_packet), store=False)
 
 if __name__ == "__main__":

@@ -29,7 +29,7 @@ def get_credential(packet, credential_keys):
     return None
 
 
-def get_all_user_credentials(packet):
+def get_all_user_credentials(packet, data):
     user_credentials = {}
     for credential in user_credential_keys:
         user_credentials[credential] = get_credential(packet, credential)
