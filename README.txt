@@ -15,10 +15,10 @@ Team Members
 
 Contributions
 
-    Shubham Yadav: todo
-    Chandan Rakholia: Keyword Search Functionality, regex and credential search.
-    Aarav Jain: todo
-    Lalak Yadav: todo
+    Shubham Yadav: tester and debugger.
+    Chandan Rakholia: Keyword Search Functionality, developed a test html website to test the correcness of the code.
+    Aarav Jain: Credential search functionality.
+    Lalak Yadav: regex search functionality.
 
 Dependencies
 
@@ -28,3 +28,24 @@ Install dependencies using:
 
 pip install scapy
 
+
+Steps to run the code
+1. sudo -E /home/aarav/anaconda3/bin/python main.py
+The following output is printed:
+Choose one of the following:
+      1. Alert on string matched
+      2. Alert on Regex matched 
+      3. Collect User credentials
+
+2. Enter the choice:
+For example if you write: 2 (regex input)
+Enter the Regular expression to search for: (Aarav)+
+
+Sniffing packets -------
+Alert ----- PACKET FOUND!
+Interface: lo
+Source IP: 127.0.0.1
+Destination IP: 127.0.0.1
+Protocol: TCP
+Source Port: 80
+Destination Port: 58788

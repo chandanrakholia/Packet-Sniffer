@@ -1,4 +1,4 @@
-from scapy.all import sniff, TCP, Raw, IP, UDP
+from scapy.all import sniff, TCP, Raw, IP, UDP, get_if_list
 from keyword_search import regex_search, keyword_search
 from user_credentials import get_all_user_credentials
 
@@ -24,7 +24,10 @@ def print_packet(packet):
 
 def execute(packet, data, check_packet):
     if packet.haslayer(Raw):
-        check_packet(packet, data)
+        if data != {} and check_packet(packet, data):
+            print_packet(packet=packet)
+        elif data == {}:
+            check_packet(packet, data)
 
 
 def main():
@@ -47,9 +50,10 @@ def main():
         data["regex"] = regex_to_search
     elif choice == "3":
         check_packet = get_all_user_credentials
-
     print("Sniffing packets ------- \n")
-    sniff(prn=lambda packet: execute(packet, data, check_packet), store=False)
+
+    interfaces = get_if_list()
+    sniff(prn=lambda packet: execute(packet, data, check_packet), iface=interfaces ,store=False)
 
 if __name__ == "__main__":
     main()
