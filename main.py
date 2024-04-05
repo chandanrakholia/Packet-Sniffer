@@ -27,7 +27,10 @@ def execute(packet, data, check_packet):
         if data != {} and check_packet(packet, data):
             print_packet(packet=packet)
         elif data == {}:
-            check_packet(packet, data)
+            if check_packet(packet, data):
+                print_packet(packet)
+                exit(0)
+
 
 
 def main():
